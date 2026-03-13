@@ -1,0 +1,36 @@
+# RULES: rhai-runtime
+
+## Active Rules
+Load these via get_rule() at session start.
+
+### Always
+- global/topology.md
+- global/module-tree.md
+- global/file-limits.md
+- global/config-driven.md
+- global/persistent-state.md
+
+### Language: Rust
+- rust/README.md
+- rust/ownership.md
+- rust/errors.md
+- rust/naming.md
+- rust/modules.md
+- rust/types.md
+- rust/nesting.md
+- rust/constants.md
+- rust/verification.md
+
+## Project Rules
+Conventions specific to this codebase.
+
+- All Rhai API functions are registered in src/api/ — one file per API domain (fs, shell, env, http)
+- main.rs only wires modules and launches the engine — no business logic
+- Compile-time constants live in src/state/ (sizes, durations, limits, paths, urls)
+- Error types defined per module — never inline errors at call sites
+- `anyhow` is allowed ONLY in main.rs (CLI boundary) — all other code uses thiserror enums
+- Rhai API functions return Dynamic or Result<Dynamic, Box<EvalAltResult>> — match Rhai's type system
+- No `println!` — use `tracing::{info, warn, error}` except for explicit script output (print/eprint builtins)
+
+## Derived from FIXES
+(empty — populated as issues are discovered)

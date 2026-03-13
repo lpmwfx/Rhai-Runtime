@@ -1,0 +1,71 @@
+# TODO: MVP — Rhai Runtime v0.1
+
+phase: 1
+id: mvp
+
+## Project Scaffold
+
+- id: 1
+  task: Create Cargo.toml with rhai, ureq, serde_json, thiserror, anyhow, tracing dependencies
+  pass: `cargo check` succeeds
+  status: pending
+
+- id: 2
+  task: Create src/main.rs — CLI entry point, arg parsing, engine setup, module wiring
+  pass: `rhai --help` prints usage; `rhai examples/hello.rhai` runs
+  status: pending
+
+- id: 3
+  task: Create src/state/ — sizes.rs, paths.rs constants
+  pass: cargo check succeeds, no literal ≥ 2 in function bodies
+  status: pending
+
+## API Modules
+
+- id: 4
+  task: Create src/api/fs.rs — filesystem functions (read_file, write_file, append_file, remove_file, copy_file, move_file, make_dir, read_dir, path_exists, is_file, is_dir, file_size)
+  pass: `rhai examples/build.rhai` exercises all fs functions without panic
+  status: pending
+
+- id: 5
+  task: Create src/api/shell.rs — sh(), sh_ok(), exit(), args()
+  pass: sh("echo hi").ok == true; sh_ok panics/exits on nonzero
+  status: pending
+
+- id: 6
+  task: Create src/api/env.rs — env(), env_or(), set_env(), env_map()
+  pass: env_or("MISSING", "fallback") returns "fallback"
+  status: pending
+
+- id: 7
+  task: Create src/api/http.rs — http_get(), http_get_json(), http_post()
+  pass: `rhai examples/http_fetch.rhai https://httpbin.org/get` writes output.json
+  status: pending
+
+## CLI
+
+- id: 8
+  task: Shebang support — strip `#!/...` first line before eval
+  pass: Script with shebang runs without parse error
+  status: pending
+
+- id: 9
+  task: --help flag
+  pass: `rhai --help` prints usage text and exits 0
+  status: pending
+
+## Examples & Std
+
+- id: 10
+  task: Write examples/build.rhai, examples/deploy.rhai, examples/http_fetch.rhai
+  pass: Each example runs without error (with appropriate env/conditions)
+  status: pending
+
+- id: 11
+  task: Write std/log.rhai and std/path.rhai as importable Rhai modules
+  pass: `import "std/log"` works from a script
+  status: pending
+
+## Blockers
+
+- none

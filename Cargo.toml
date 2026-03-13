@@ -1,0 +1,20 @@
+[package]
+name = "rhai-runtime"
+version = "0.1.0"
+edition = "2021"
+description = "A general-purpose Rhai scripting runtime — rhai script.rhai like python script.py"
+license = "EUPL-1.2"
+repository = "https://github.com/lpmwfx/Rhai-Runtime"
+
+[[bin]]
+name = "rhai"
+path = "src/main.rs"
+
+[dependencies]
+rhai        = { version = "1", features = ["serde"] }
+ureq        = { version = "2", features = ["json"] }
+serde_json  = "1"
+thiserror   = "1"
+anyhow      = "1"
+tracing     = "0.1"
+tracing-subscriber = { version = "0.3", features = ["env-filter"] }

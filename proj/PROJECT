@@ -1,0 +1,38 @@
+# PROJECT: rhai-runtime
+
+## Goal
+A standalone CLI binary that turns Rhai into a general-purpose scripting runtime — the missing `rhai script.rhai` equivalent of `python script.py`. Rust is the engine; the binary exposes filesystem, shell, environment, and HTTP APIs to Rhai scripts. No new syntax is invented — Rhai is the language, Rust is the host.
+
+## Stack
+- Language: Rust 2021, stable toolchain
+- Scripting: rhai = { version = "1", features = ["serde"] }
+- HTTP: ureq = { version = "2", features = ["json"] }
+- Serialisation: serde_json = "1"
+- Error handling: thiserror (core), anyhow (CLI boundary only)
+- Logging: tracing + tracing-subscriber
+
+## Structure
+- src:      src/
+- std:      std/          (importable Rhai standard library modules)
+- examples: examples/
+- proj:     proj/
+- config:   N/A (no runtime config file yet)
+
+## Method
+- Workflow: PROJECT → FIXES → TODO → code → test → DONE
+- Branching: feature branches, never commit to main
+- Testing: cargo test (unit) + integration tests via examples/
+- Build: cargo build --release
+
+## Patterns
+- api-registration: All Rhai API functions are registered in src/api/ modules, wired in main.rs
+- state-per-concern: Compile-time constants live in src/state/ (sizes, durations, limits, paths)
+- error-newtype: Each API module defines its own error enum with thiserror; anyhow wraps at CLI entry
+
+## Current
+- phase: 1
+- id: mvp
+- status: development
+
+## History
+(none yet — project initialised 2026-03-13)

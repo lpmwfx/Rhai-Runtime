@@ -1,0 +1,7 @@
+{
+  "permissions": {
+    "allow": [
+      "mcp__rulestools__setup"
+    ]
+  }
+}
