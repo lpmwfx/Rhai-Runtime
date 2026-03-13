@@ -52,7 +52,7 @@ fn main() -> Result<()> {
 
     engine
         .run(&source)
-        .with_context(|| format!("Script error in {script_path}"))?;
+        .map_err(|e| anyhow::anyhow!("Script error in {script_path}: {e}"))? ;
 
     Ok(())
 }
