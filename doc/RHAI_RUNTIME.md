@@ -226,3 +226,12 @@ cargo install rhai-run
 - **Rust er motoren** — APIs implementeres i Rust og eksponeres til scripts
 - **Python er forbilledet** — det skal være ligeså nemt at skrive `rhai script.rhai` som `python script.py`
 - **Ingen magic** — scripts er plain `.rhai` filer, ingen config påkrævet
+
+
+---
+
+<!-- LARS:START -->
+<a href="https://lpmathiasen.com">
+  <img src="https://carousel.lpmathiasen.com/carousel.svg?slot=5" alt="Lars P. Mathiasen"/>
+</a>
+<!-- LARS:END -->
